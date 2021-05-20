@@ -11,7 +11,7 @@ function App() {
   
   return (
     <div className="App">
-      <textarea id="text-type"  placeholder="Type here..." value={typedText} rows="5" cols="114">
+      <textarea id="text-type"  placeholder="Type here..." value={typedText} rows="5" cols="114" autoFocus="true">
       </textarea>
       <Keyboard textEvent={textEvent} typedText={typedText}></Keyboard>
     </div>

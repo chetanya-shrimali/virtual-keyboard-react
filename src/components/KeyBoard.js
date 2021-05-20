@@ -3,7 +3,7 @@ import Key from './Key';
 import { useState } from 'react';
 import data from '../data.json';
 
-const Keyboard = ({title, typedText, textEvent}) => {
+const Keyboard = ({typedText, textEvent}) => {
   const [shiftTriggered, setShiftTriggered] = useState(
     false
   );
@@ -16,12 +16,13 @@ const Keyboard = ({title, typedText, textEvent}) => {
     data
   );
 
-  const generateKeys = () => {
-    return keyStructure.map((key)=> {
+  // generate key values
+  const generateKeys = (data, shiftStatus, capsStatus) => {
+    return data.map((key)=> {
       let value = '';
-      if (shiftTriggered) {
+      if (shiftStatus) {
         value = (key.type !== 'func') ? key.values.secondary || key.values.primary.toUpperCase() : key.values.primary;
-      } else if (capsTriggered) {
+      } else if (capsStatus) {
         value = (key.type === 'alphabet') ? key.values.primary.toUpperCase() : key.values.primary; 
       } else {
         value = key.values.primary;
@@ -31,12 +32,11 @@ const Keyboard = ({title, typedText, textEvent}) => {
   }
 
   const [keys, setKeys] = useState(
-    generateKeys()
+    generateKeys(keyStructure, false, false)
   );
 
-  // 1) randomise key implementation
-  // 2) check what all are function keys
-  // 3) fix all reload stuff
+
+  // generate random keyboard structure
   const randomiseKeyStructure = () => {
     let updatedStructure = [];
     let positions = [];
@@ -52,14 +52,31 @@ const Keyboard = ({title, typedText, textEvent}) => {
   }
 
   const keyActions = (value) => {
+    let newKeys;
     switch (value) {
       case 'shift':
-        setShiftTriggered(!shiftTriggered);
-        setKeys(generateKeys());
+        let shiftChangeTriggered;
+        // change reference so that react knows state has changed
+        if (shiftTriggered) {
+          shiftChangeTriggered = false;
+        } else {
+          shiftChangeTriggered = true;
+        }
+        setShiftTriggered(shiftChangeTriggered);
+        newKeys = generateKeys(keyStructure, shiftChangeTriggered);
+        setKeys(newKeys);
         break;
       case 'caps':
-        setCapsTriggered(!capsTriggered);
-        setKeys(generateKeys());
+        // change reference so that react knows state has changed
+        let capsChangeTriggered;
+        if (capsTriggered) {
+          capsChangeTriggered = false;
+        } else {
+          capsChangeTriggered = true;
+        }
+        setCapsTriggered(capsChangeTriggered);
+        newKeys = generateKeys(keyStructure, shiftTriggered,capsChangeTriggered);
+        setKeys(newKeys);
         break;
       case 'space':
         typedText = typedText + ' ';
@@ -68,42 +85,44 @@ const Keyboard = ({title, typedText, textEvent}) => {
         typedText = typedText + '\n';
         break;
       case 'delete':
-        typedText = typedText.slice(0,typedText.length-1); //test
+        if (typedText.slice(-2) === '\n') {
+          typedText = typedText.slice(0,typedText.length-2);
+        } else {
+          typedText = typedText.slice(0,typedText.length-1);
+        }
         break;
       default:
         if (capsTriggered) {
           typedText = typedText + value.toUpperCase();
         } else {
-          typedText = typedText + value.toUpperCase();
+          typedText = typedText + value;
         }
-        setShiftTriggered(false);
-        setKeyStructure(randomiseKeyStructure(keyStructure));
-        setKeys(generateKeys());
+        // change reference so that react knows state has changed
+        let setShiftToFalse = false;
+        setShiftTriggered(setShiftToFalse);
+        let newStructure = randomiseKeyStructure()
+        newKeys = generateKeys(newStructure, setShiftToFalse, capsTriggered);
+        setKeyStructure(newStructure);
+        setKeys(newKeys);
     }
     textEvent(typedText);
   }
 
   const onClickEvent = (value) => {
-    console.log("got here",value);
-    // let finalString = '';
     keyActions(value);
-    // randomiseKeys();
   }
 
   return (
     <div className="keyboard-container">
-      {keys.map((elem,i) => {
+      {keys ? keys.map((elem,i) => {
           return <span><Key key={i} keyItem={elem} index={i} onClick={onClickEvent}></Key></span>;
-      })}
+      }): ''}
     </div>
   )
 };
 
-Keyboard.defaultProps = {
-  title: 'Keyboard'
-};
-
 Keyboard.propTypes = {
-  title: PropTypes.string
+  typedText: PropTypes.string,
+  textEvent: PropTypes.func
 };
 export default Keyboard;

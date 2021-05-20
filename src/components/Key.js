@@ -17,11 +17,9 @@ const Key = ({keyItem, index, onClick}) => {
   )
 };
 
-// Key.defaultProps = {
-//   title: 'key'
-// };
-
-// Key.propTypes = {
-//   title: PropTypes.string
-// };
+Key.propTypes = {
+  keyItem: PropTypes.object,
+  index: PropTypes.number,
+  onClick: PropTypes.func
+};
 export default Key;
