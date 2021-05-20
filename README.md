@@ -11,7 +11,7 @@ Some the examples where we can use such keyboard:
 
 This project is deployed on [App engine](https://virtual-keyboard-314314.el.r.appspot.com/)
 
-
+![keyborad](./demo/keyboard.png)
 
 ## Install dependencies
 
