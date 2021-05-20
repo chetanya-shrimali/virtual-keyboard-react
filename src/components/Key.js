@@ -1,24 +1,20 @@
 import PropTypes from 'prop-types';
 
 const Key = ({keyItem, index, onClick}) => {
-  // console.log(keyItem);
-  // console.log(key);
-  // console.log(onClick)
   let buttonClicked = (e) => {
-    // console.log(value);
     onClick(keyItem);
   }
 
   return (
     <>
       <button className="key button" onClick={buttonClicked}>{keyItem}</button>
-      {index%13==0 && index!=0?<br></br>:''}
+      {index%13===0 && index!==0?<br></br>:''}
     </>
   )
 };
 
 Key.propTypes = {
-  keyItem: PropTypes.object,
+  keyItem: PropTypes.string,
   index: PropTypes.number,
   onClick: PropTypes.func
 };

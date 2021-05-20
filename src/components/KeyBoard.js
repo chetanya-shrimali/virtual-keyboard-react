@@ -40,7 +40,7 @@ const Keyboard = ({typedText, textEvent}) => {
   const randomiseKeyStructure = () => {
     let updatedStructure = [];
     let positions = [];
-    while(keyStructure.length!=positions.length) {
+    while(keyStructure.length!==positions.length) {
       var randomPosition = Math.floor(Math.random()*100%52)
       let value = keyStructure[randomPosition];
       if (positions.indexOf(randomPosition) === -1) {
@@ -63,7 +63,7 @@ const Keyboard = ({typedText, textEvent}) => {
           shiftChangeTriggered = true;
         }
         setShiftTriggered(shiftChangeTriggered);
-        newKeys = generateKeys(keyStructure, shiftChangeTriggered);
+        newKeys = generateKeys(keyStructure, shiftChangeTriggered, capsTriggered);
         setKeys(newKeys);
         break;
       case 'caps':
@@ -114,9 +114,9 @@ const Keyboard = ({typedText, textEvent}) => {
 
   return (
     <div className="keyboard-container">
-      {keys ? keys.map((elem,i) => {
+      {keys.map((elem,i) => {
           return <span><Key key={i} keyItem={elem} index={i} onClick={onClickEvent}></Key></span>;
-      }): ''}
+      })}
     </div>
   )
 };
