@@ -7,11 +7,10 @@ function App() {
   const textEvent = (value) => {
     setTypedText(value);
   }
-  let autoFocus = true;
   
   return (
     <div className="App">
-      <textarea id="text-type"  placeholder="Type here..." value={typedText} rows="5" cols="133" readOnly autoFocus={autoFocus}>
+      <textarea id="text-type"  placeholder="Type here..." value={typedText} rows="5" cols="133" readOnly autoFocus>
       </textarea>
       <Keyboard textEvent={textEvent} typedText={typedText}></Keyboard>
     </div>
