@@ -1,0 +1,335 @@
+[
+  {
+    "values": {
+      "primary": "`",
+      "secondary": "~"
+    },
+    "type": "character"
+  },
+  {
+    "values": {
+      "primary": "1",
+      "secondary": "!"
+    },
+    "type": "numeric"
+  },
+  {
+    "values": {
+      "primary": "2",
+      "secondary": "@"
+    },
+    "type": "numeric"
+  },
+  {
+    "values": {
+      "primary": "3",
+      "secondary": "#"
+    },
+    "type": "numeric"
+  },
+  {
+    "values": {
+      "primary": "4",
+      "secondary": "$"
+    },
+    "type": "numeric"
+  },
+  {
+    "values": {
+      "primary": "5",
+      "secondary": "%"
+    },
+    "type": "numeric"
+  },
+  {
+    "values": {
+      "primary": "6",
+      "secondary": "^"
+    },
+    "type": "numeric"
+  },
+  {
+    "values": {
+      "primary": "7",
+      "secondary": "&"
+    },
+    "type": "numeric"
+  },
+  {
+    "values": {
+      "primary": "8",
+      "secondary": "*"
+    },
+    "type": "numeric"
+  },
+  {
+    "values": {
+      "primary": "9",
+      "secondary": "("
+    },
+    "type": "numeric"
+  },
+  {
+    "values": {
+      "primary": "0",
+      "secondary": ")"
+    },
+    "type": "numeric"
+  },
+  {
+    "values": {
+      "primary": "_",
+      "secondary": "-"
+    },
+    "type": "character"
+  },
+  {
+    "values": {
+      "primary": "=",
+      "secondary": "+"
+    },
+    "type": "character"
+  },
+  {
+    "values": {
+      "primary": "delete"
+    },
+    "type": "func"
+  },
+  {
+    "values": {
+      "primary": "shift"
+    },
+    "type": "func"
+  },
+  {
+    "values": {
+      "primary": "q"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "w"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "e"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "r"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "t"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "y"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "u"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "i"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "o"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "p"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "[",
+      "secondary": "{"
+    },
+    "type": "character"
+  },
+  {
+    "values": {
+      "primary": "]",
+      "secondary": "}"
+    },
+    "type": "character"
+  },
+  {
+    "values": {
+      "primary": "caps"
+    },
+    "type": "func"
+  },
+  {
+    "values": {
+      "primary": "a"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "s"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "d"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "f"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "g"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "h"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "j"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "k"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "l"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": ";",
+      "secondary": ":"
+    },
+    "type": "character"
+  },
+  {
+    "values": {
+      "primary": "'",
+      "secondary": "\""
+    },
+    "type": "character"
+  },
+  {
+    "values": {
+      "primary": "enter"
+    },
+    "type": "func"
+  },
+  {
+    "values": {
+      "primary": "z"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "x"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "c"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "v"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "b"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "n"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "m"
+    },
+    "type": "alphabet"
+  },
+  {
+    "values": {
+      "primary": "space"
+    },
+    "type": "func"
+  },
+  {
+    "values": {
+      "primary": ",",
+      "secondary": "<"
+    },
+    "type": "character"
+  },
+  {
+    "values": {
+      "primary": ".",
+      "secondary": ">"
+    },
+    "type": "character"
+  },
+  {
+    "values": {
+      "primary": "/",
+      "secondary": "?"
+    },
+    "type": "character"
+  },
+  {
+    "values": {
+      "primary": "\\",
+      "secondary": "|"
+    },
+    "type": "character"
+  }
+]

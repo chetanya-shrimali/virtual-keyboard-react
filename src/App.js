@@ -1,22 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import Key from './components/Key';
+import Keyboard from './components/KeyBoard';
+import { useState } from 'react';
 
 function App() {
+  const [typedText, setTypedText] = useState("start");
+  const textEvent = (value) => {
+    setTypedText(value);
+  }
+  
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <textarea id="text-type" value={typedText} rows="4" cols="50" className="focus-visible">
+        </textarea>
+        <Keyboard textEvent={textEvent}></Keyboard>
       </header>
     </div>
   );
