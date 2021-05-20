@@ -1,15 +1,23 @@
 import PropTypes from 'prop-types';
 import Key from './Key';
-// import { useState } from 'react';
+import { useState } from 'react';
 import data from '../data.json';
 
-const Keyboard = ({title, text, textEvent}) => {
-  // const keys = data;
-  let typedText = '';
-  let shiftTriggered = true;
-  let capsTriggered = true;
+const Keyboard = ({title, typedText, textEvent}) => {
+  const [shiftTriggered, setShiftTriggered] = useState(
+    false
+  );
+  
+  const [capsTriggered, setCapsTriggered] = useState(
+    false
+  );
+
+  const [keyStructure, setKeyStructure] = useState(
+    data
+  );
+
   const generateKeys = () => {
-    return data.map((key)=> {
+    return keyStructure.map((key)=> {
       let value = '';
       if (shiftTriggered) {
         value = (key.type !== 'func') ? key.values.secondary || key.values.primary.toUpperCase() : key.values.primary;
@@ -22,19 +30,36 @@ const Keyboard = ({title, text, textEvent}) => {
     })
   }
 
+  const [keys, setKeys] = useState(
+    generateKeys()
+  );
+
   // 1) randomise key implementation
   // 2) check what all are function keys
   // 3) fix all reload stuff
+  const randomiseKeyStructure = () => {
+    let updatedStructure = [];
+    let positions = [];
+    while(keyStructure.length!=positions.length) {
+      var randomPosition = Math.floor(Math.random()*100%52)
+      let value = keyStructure[randomPosition];
+      if (positions.indexOf(randomPosition) === -1) {
+        updatedStructure.push(value);
+        positions.push(randomPosition);
+      }
+    }
+    return updatedStructure;
+  }
 
   const keyActions = (value) => {
     switch (value) {
       case 'shift':
-        shiftTriggered = !shiftTriggered;
-        keys = generateKeys();
+        setShiftTriggered(!shiftTriggered);
+        setKeys(generateKeys());
         break;
       case 'caps':
-        capsTriggered = !capsTriggered;
-        keys = generateKeys();
+        setCapsTriggered(!capsTriggered);
+        setKeys(generateKeys());
         break;
       case 'space':
         typedText = typedText + ' ';
@@ -51,9 +76,9 @@ const Keyboard = ({title, text, textEvent}) => {
         } else {
           typedText = typedText + value.toUpperCase();
         }
-        shiftTriggered = !shiftTriggered;
-        keys = generateKeys();
-        // code block
+        setShiftTriggered(false);
+        setKeyStructure(randomiseKeyStructure(keyStructure));
+        setKeys(generateKeys());
     }
     textEvent(typedText);
   }
@@ -62,9 +87,8 @@ const Keyboard = ({title, text, textEvent}) => {
     console.log("got here",value);
     // let finalString = '';
     keyActions(value);
+    // randomiseKeys();
   }
-
-  let keys = generateKeys();
 
   return (
     <div>
