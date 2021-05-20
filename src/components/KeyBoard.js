@@ -91,7 +91,7 @@ const Keyboard = ({title, typedText, textEvent}) => {
   }
 
   return (
-    <div>
+    <div className="keyboard-container">
       {keys.map((elem,i) => {
           return <span><Key key={i} keyItem={elem} index={i} onClick={onClickEvent}></Key></span>;
       })}

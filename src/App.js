@@ -1,20 +1,19 @@
 import Key from './components/Key';
+import './App.css';
 import Keyboard from './components/KeyBoard';
 import { useState } from 'react';
 
 function App() {
-  const [typedText, setTypedText] = useState("start");
+  const [typedText, setTypedText] = useState("");
   const textEvent = (value) => {
     setTypedText(value);
   }
   
   return (
     <div className="App">
-      <header className="App-header">
-        <textarea id="text-type" value={typedText} rows="4" cols="50" className="focus-visible">
-        </textarea>
-        <Keyboard textEvent={textEvent} typedText={typedText}></Keyboard>
-      </header>
+      <textarea id="text-type"  placeholder="Type here..." value={typedText} rows="5" cols="114">
+      </textarea>
+      <Keyboard textEvent={textEvent} typedText={typedText}></Keyboard>
     </div>
   );
 }

@@ -11,7 +11,7 @@ const Key = ({keyItem, index, onClick}) => {
 
   return (
     <>
-      <button className="btn" onClick={buttonClicked}>{keyItem}</button>
+      <button className="key button" onClick={buttonClicked}>{keyItem}</button>
       {index%13==0 && index!=0?<br></br>:''}
     </>
   )
